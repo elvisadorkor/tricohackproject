@@ -43,9 +43,11 @@ def index():
             
             if value == abbrev:
                 result.append(item)
-                break
         print(result)
-        return render_template('index.html',result = len(result))
+        result_count = len(result)
+        return render_template('index.html',result = result_count)
+
+        
     print('here')
     return render_template('index.html',result=0)
 

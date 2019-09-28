@@ -18,7 +18,8 @@
             </ul>
         </nav>
         <p>Social Equity Resource Database</p>
-        <p>Database of Expungement and Pardon Law Nationally and Employment and Voting Rights for People with Criminal Records</p>
+        <p>Database of Expungement and Pardon Law Nationally and Employment and Voting Rights for People with Criminal
+            Records</p>
     </section>
     <section id="topics">
         <div class="topic">
@@ -48,14 +49,13 @@
                     </div>
                 </form>
                 <div id="alert"></div>
-                {%if result != 0 %}
-                <div>
-                    Found {{result}} resource(s)
+
+
+                <div id="result">
+
                 </div>
-                
-                {%else%}
-                    <p>Found nothing</p>
-                {%endif%}
+
+
 
             </div>
         </div>
@@ -143,6 +143,23 @@
                         .stop()
                         .animate({}, 1000);
 
+                    if (data.name == 'NY') {
+                        document.getElementById('result').innerText = 4;
+                        var resources =
+                            `
+                            <div class='links'>
+                        <a href="https://lac.org/faqs/" target="_blank">Legal Action Center</a>
+<a href="https://www.legalaidnyc.org/criminal/#locations" target="_blank">The Legal Aid Society</a>
+<a href="http://www.legalservicesnyc.org" target="_blank">Legal Services NYC</a>
+<a href="http://www.cssny.org" target="_blank">Community Service Society of New York</a>
+                            </div>
+
+`                       
+document.getElementById('result').innerHTML += resources;
+                            ;
+                    } else {
+                        document.getElementById('result').innerText = 'No resource Found';
+                    }
 
                     fetch('http://localhost:5000/',
                         {
