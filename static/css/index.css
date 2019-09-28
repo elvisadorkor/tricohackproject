@@ -1,0 +1,281 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Avenir Next',sans-serif;
+    scroll-behavior: smooth;
+}
+
+#top_nav{
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+#logo{
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 1vw;
+}
+
+#top_nav > ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-around;
+    width: 30%;
+
+}
+
+#top_nav a{
+    text-decoration: none;
+    color: white;
+}
+
+section{
+    min-height: 100vh;
+    max-height: 975px;
+}
+
+#banner {
+    width: 100%;
+    background: linear-gradient(135deg, #0C66FF 0%, #0C1DFF 100%);
+}
+
+#banner > p:first-of-type{
+    font-size: 48px;
+    text-align: center;
+    margin: 130px auto;
+    color: white;
+}
+
+#banner > p:nth-of-type(2){
+    text-align: center;
+    color: white;
+    width: 350px;
+    margin: 0 auto;
+}
+
+#topics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100vh;
+    max-height: 975px;
+    padding-top: 105px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.topic{
+    min-width: 150px;
+    width: 350px;
+}
+.topic > h1{
+    color:#0452A2;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+#feedback{
+    text-align: center;
+    font-size: 16px;
+}
+
+#feedback > p:first-of-type{
+    font-size: 32;
+    color:#0452A2;
+}
+
+#feedback_form{
+    text-align: center;
+     margin: 45px auto; 
+     width: 50%;
+    color: #0452A2;
+}
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 658px;
+}
+
+fieldset > input{
+    width: 100%;
+}
+
+fieldset > label{
+    text-align: left;
+    margin: 30px 0;
+
+}
+
+#sendfeedback{
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    width: 195px;
+    height: 60px;
+    margin-bottom: 180px;
+    box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #0C66FF;
+  border: 2px solid #0C66FF;
+  margin: 30px auto;
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    height: 270px;
+    padding-top: 30px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: linear-gradient(135deg, #0C66FF 0%, #0C1DFF 100%);
+}
+
+#extra{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 30vh;
+    max-height: 200px;
+    padding-top: 80px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.headings{
+    min-width: 150px;
+    width: 350px;
+}
+
+
+
+.headings > h1{
+    color: white;
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.headings > ul {
+    list-style-type: none;
+}
+
+.headings  a{
+    text-decoration: none;
+    color: white;
+}
+
+#map_section{
+    
+}
+
+#map_section > div{
+    display: flex;
+    flex-direction: row;
+}
+
+#map_section > p{
+    text-align: center;
+    margin: 30px auto;
+}
+
+#map_section > h1{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: #0452A2;
+
+}
+
+#map{
+    width: 60%;
+    max-width: 930px;
+    height: 630px;
+    margin: 10px 45px;
+    box-shadow: 0 12px 40px 0 rgba(176,176,176,0.23);
+    border-radius: 10px;
+    text-align: center;
+}
+
+#side_bar{
+    height: 610px;
+    margin: 10px 10px 45px 10px;
+  width: 545px;
+  border-radius: 10px;
+  background-color: #0C66FF;
+  padding: 20px 0px 0px 20px;
+}
+
+#alert{
+    height: 75px;
+    width: 377px;
+    color: #FFF;
+    font-family: "Avenir Next";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 44px;
+    margin-top: 150px;
+}
+
+#side_bar > p:first-of-type{
+    height: 75px;
+    width: 435px;
+    color: #FFF;
+    font-family: "Avenir Next";
+    font-size: 24px;
+    font-weight: 500;
+
+}
+
+#search_input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    height: 38px;
+    width: 300px;
+    margin-left: 10px;
+}
+
+#search_form > div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#search_icon{
+    width: 36px;
+    height: 36px;
+
+}
+
+.input1{
+    height: 60px;
+    border-radius: 10px;
+  background-color: #FFF;
+  border: 1px solid white;
+  box-shadow: 0 2px 45px 0 rgba(0,0,0,0.09);
+}
+
+::placeholder{
+    color: white;
+}
+
+.input2{
+    height: 300px;
+  width: 658px;
+  border-radius: 10px;
+  background-color: #FFF;
+  border: none;
+  box-shadow: 0 2px 45px 0 rgba(0,0,0,0.09);
+}

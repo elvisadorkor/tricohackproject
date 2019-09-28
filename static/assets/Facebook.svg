@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="30" width="30">
+  <defs>
+    <path id="path-1" opacity="1" fill-rule="evenodd" d="M0,15 C0,6.71572835 6.71572835,0 15,0 C23.28427165,0 30,6.71572835 30,15 C30,23.28427165 23.28427165,30 15,30 C6.71572835,30 0,23.28427165 0,15Z"/>
+    <mask id="mask-2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0">
+      <rect opacity="1" x="0" y="0" width="30" height="30" fill="black"/>
+      <use xlink:href="#path-1" fill="white"/>
+    </mask>
+    <path id="path-3" opacity="1" fill-rule="evenodd" d="M16.56347195,23.819672950000005 L16.56347195,15.658881000000001 L18.8162074,15.658881000000001 L19.1147435,12.846626900000002 L16.56347195,12.846626900000002 L16.5672993,11.439066650000001 C16.5672993,10.705587500000002 16.63698965,10.312572600000001 17.69047755,10.312572600000001 L19.09879605,10.312572600000001 L19.09879605,7.500000000000001 L16.84574165,7.500000000000001 C14.13946095,7.500000000000001 13.1869203,8.864245800000003 13.1869203,11.158478250000002 L13.1869203,12.846945400000003 L11.5,12.846945400000003 L11.5,15.659199500000003 L13.1869203,15.659199500000003 L13.1869203,23.819672950000005 L16.56347195,23.819672950000005Z"/>
+  </defs>
+  <g opacity="1">
+    <g opacity="1">
+      <g opacity="1">
+        <use xlink:href="#path-1" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" mask="url(#mask-2)"/>
+      </g>
+      <g opacity="1">
+        <use xlink:href="#path-3" fill="rgb(255,255,255)" fill-opacity="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

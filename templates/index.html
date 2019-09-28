@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}">
+
+</head>
+
+<body>
+    <section id="banner">
+        <nav id="top_nav">
+            <!-- REMEMBER TO PUT THE ACTUAL LOGO HERE! -->
+            <p id="logo">PLSE</p>
+            <ul>
+                <li><a href="#topics">Overview</a></li>
+                <li><a href="#map_section">Map</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+            </ul>
+        </nav>
+        <p>Social Equity Resource Database</p>
+        <p>Database of Expungement and Pardon Law Nationally and Employment and Voting Rights for People with Criminal Records</p>
+    </section>
+    <section id="topics">
+        <div class="topic">
+            <h1>Expungement</h1>
+            <p>Get connected to the right resources to have the legal record of your criminal conviction cleared</p>
+        </div>
+        <div class="topic">
+            <h1>Pardon Law</h1>
+            <p>Get connected to the right resources for pardon and waiver services</p>
+        </div>
+        <div class="topic">
+            <h1>Social Rights</h1>
+            <p>Get information about processes to go through to claim your legal social rights </p>
+        </div>
+    </section>
+    <section id="map_section">
+        <h1>Browse Resources by State</h1>
+        <p>Learn about resources in your state through our interactive resource map.</p>
+        <div>
+            <div id="map"></div>
+            <div id="side_bar">
+                <p>What State do you live in?</p>
+                <form id="search_form">
+                    <div>
+                        <img id="search_icon" src="{{url_for('static',filename='assets/Icon- Search.svg')}}">
+                        <input type="text" id="search_input" placeholder="Search state">
+                    </div>
+                </form>
+                <div id="alert"></div>
+                {%if result != 0 %}
+                <div>
+                    Found {{result}} resource(s)
+                </div>
+                
+                {%else%}
+                    <p>Found nothing</p>
+                {%endif%}
+
+            </div>
+        </div>
+
+        <!-- <button id="over-md">mouseover MD</button> <button id="out-md">mouseout MD</button> -->
+        <!-- <div id="map2" style="width: 300px; height: 300px;"></div> -->
+    </section>
+    <section id="feedback">
+        <p>Was this site helpful? Let us know!</p>
+        <form id="feedback_form">
+            <fieldset>
+                <label>Email:</label>
+                <input class="input1" type="text" name="email" size="60"><br>
+
+            </fieldset>
+            <fieldset>
+                <label>Feedback details:</label>
+                <input class="input2" type="text" name="feedbackdetails" size="60"><br>
+
+            </fieldset>
+            <button id="sendfeedback" type="submit">
+                Send
+            </button>
+        </form>
+
+    </section>
+
+    <footer>
+
+        <div class="headings">
+            <h1>About PLSE</h1>
+            <ul>
+                <li><a href="http://plsephilly.org/who-we-are/mission-history/">Mission and History</a></li>
+                <li><a href="http://plsephilly.org/who-we-are/staff-board/">Staff and Board</a></li>
+                <li><a href="http://plsephilly.org/who-we-are/mike-lee-fellows/">Mike Lee Fellows</a></li>
+                <li><a href="http://plsephilly.org/who-we-are/funders-partners/">Funders and Partners</a></li>
+            </ul>
+        </div>
+        <div class="headings">
+            <h1>What We Do</h1>
+            <ul>
+                <li><a href="http://plsephilly.org/what-we-do/litigation/">Litigation</a></li>
+                <li><a href="http://plsephilly.org/what-we-do/legislation/">Legislation</a></li>
+                <li><a href="http://plsephilly.org/what-we-do/pardons/">Pardon Hubs</a></li>
+                <li><a href="http://plsephilly.org/what-we-do/education-outreach/">Education and Outreach</a></li>
+            </ul>
+        </div>
+        <div class="headings">
+            <h1>Social Rights</h1>
+            <ul>
+                <li><a href="http://plsephilly.org/get-help/events/">Start An Expungement</a></li>
+                <li><a href="http://plsephilly.org/get-help/understanding-criminal-records/">Understanding Criminal
+                        Records</a></li>
+                <li><a href="http://plsephilly.org/get-help/expungement/">Expungement</a></li>
+                <li><a href="http://plsephilly.org/get-help/pardons/">Pardons</a></li>
+            </ul>
+        </div>
+
+
+    </footer>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="{{url_for('static',filename='js/raphael.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.usmap.js')}}"></script>
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#map').usmap({
+                'stateSpecificStyles': {
+                    'AK': { fill: '#f00' }
+                },
+                'stateSpecificHoverStyles': {
+                    'HI': { fill: '#ff0' }
+                },
+
+                'mouseoverState': {
+                    'HI': function (event, data) {
+                        //return false;
+                    }
+                },
+
+
+                'click': function (event, data) {
+                    $('#alert')
+                        .text('Results for ' + data.name)
+                        .stop()
+                        .animate({}, 1000);
+
+
+                    fetch('http://localhost:5000/',
+                        {
+                            method: 'POST',
+                            body: JSON.stringify({ 'state': data.name })
+
+                        })
+                        .then((response) => {
+                            if (response.ok) {
+                                return response.blob();
+                            }
+                            throw Error('didnt work')
+                        }).catch(() => {
+                            console.log('failed')
+                        })
+
+                }
+            });
+
+
+
+            $('#over-md').click(function (event) {
+                $('#map').usmap('trigger', 'MD', 'mouseover', event);
+            });
+
+            $('#out-md').click(function (event) {
+                $('#map').usmap('trigger', 'MD', 'mouseout', event);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
